@@ -13,11 +13,17 @@ public interface ExpenseDao {
     void create(String m, String d, String y, float amount, String category);
 
     @Query("SELECT * FROM expenses WHERE month = :m AND day = :d AND year = :y")
-    List<Expense> selectDay(int m, int d, int y);
+    List<Expense> selectDay(String m, String d, String y);
 
     @Query("SELECT * FROM expenses WHERE month = :m")
-    List<Expense> selectMonth(int m);
+    List<Expense> selectMonth(String m);
 
     @Query("SELECT * FROM expenses ORDER BY day, month, year")
     List<Expense> selectAll();
+
+    @Query("SELECT SUM(amount) FROM expenses WHERE category = :category AND month = :m")
+    float selectCategoryMonth(String category, String m);
+
+    @Query("SELECT SUM(amount) FROM expenses")
+    float selectTotal();
 }

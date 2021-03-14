@@ -59,7 +59,6 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
 
     public void load() {
         expenses = BudgetLYActivity.database.expenseDao().selectAll();
-        Log.v("expenses", String.valueOf(expenses.get(0).amount));
         notifyDataSetChanged();
     }
 }
