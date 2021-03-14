@@ -12,21 +12,27 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.googlepractices.budgetly.NewExpenseActivity
+import com.googlepractices.budgetly.R
 import com.googlepractices.budgetly.adapter.ExpensesAdapter
 import com.googlepractices.budgetly.databinding.ExpenseListRowBinding
 import com.googlepractices.budgetly.databinding.FragmentExpensesBinding
 import com.googlepractices.budgetly.services.MyNotificationListener
 import com.googlepractices.budgetly.ui.BudgetLYActivity
 import com.googlepractices.budgetly.util.SimpleDividerItemDecoration
+import kotlinx.android.synthetic.main.fragment_expenses.*
 
 class ExpensesFragment: Fragment() {
     private val ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners"
     private val ACTION_NOTIFICATION_LISTENER_SETTINGS = "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
     private lateinit var broadcastReceiver: BroadcastReceiver
 
+
     private var _binding: FragmentExpensesBinding? = null
     private val binding get() = _binding!!
     private lateinit var itemBindind: ExpenseListRowBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +62,12 @@ class ExpensesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setuprv()
+        add_event_button.setOnClickListener {
+            val intent = Intent(view.context, NewExpenseActivity::class.java)
+            view.context.startActivity(intent)
+        }
 
+        setuprv()
     }
 
 //    sets the adapter, layoutManager and adds a separator line to each itemView in the rv

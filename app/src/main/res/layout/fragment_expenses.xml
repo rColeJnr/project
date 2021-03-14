@@ -15,11 +15,26 @@
         android:layout_alignParentTop="true"
         android:id="@+id/expenses_title"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler_view"
-        android:layout_below="@id/expenses_title"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/expenses_title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_view"
+            android:layout_marginTop="20dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_event_button"
+            android:layout_gravity="bottom|right"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:tint="#03DAC6"
+            android:layout_margin="20dp"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>
