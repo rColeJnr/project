@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="372dp"
         android:gravity="center_vertical"
-        android:text="expen"
+        android:text="Your Expenses"
         android:textColor="@color/black"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:id="@+id/expenses_title"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view"
+        android:layout_below="@id/expenses_title"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>
