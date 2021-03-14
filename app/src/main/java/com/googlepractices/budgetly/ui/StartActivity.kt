@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class StartActivity : AppCompatActivity() {
 
-    val nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+    lateinit var nfcAdapter: NfcAdapter
     var rawMessage: Array<Parcelable>? = null
     lateinit var rawText: NdefMessage
     lateinit var ndefRecord: NdefRecord
@@ -24,8 +24,9 @@ class StartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
         Log.i("support nfc", "${(nfcAdapter != null)}")
-        Log.i("nfc enabled: ", "${(nfcAdapter?.isEnabled)}")
+        Log.i("nfc enabled: ", "${(nfcAdapter.isEnabled)}")
 
         if (intent != null){
             processIntent(intent)
@@ -44,32 +45,23 @@ class StartActivity : AppCompatActivity() {
         //check if intent has the action of a discovered NFC tag
         //with NDEF formatted contents
         //and if the user as NFC support, if true sends start the app main activity with the message received from the nfc tag
-        if (nfcAdapter != null) {
 
-            myIntent = Intent(this, BudgetLYActivity::class.java)
+        myIntent = Intent(this, BudgetLYActivity::class.java)
 
-            if (checkIntent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
+        if (checkIntent.action == NfcAdapter.ACTION_NDEF_DISCOVERED) {
 
-                //get the raw NDEF message from the tag in the form of an array
-                //access the first message
-                //access the fisrt record of the message
-                rawMessage = checkIntent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
-                rawText = rawMessage?.get(0) as NdefMessage
-                ndefRecord = rawText.records[0]
+            //get the raw NDEF message from the tag in the form of an array
+            //access the first message
+            //access the fisrt record of the message
+            rawMessage = checkIntent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
+            rawText = rawMessage?.get(0) as NdefMessage
+            ndefRecord = rawText.records[0]
 
 
-                Log.i("nfc URI detected: ", ndefRecord.payload.contentToString())
-                myIntent!!.putExtra("message", ndefRecord.payload.contentToString())
-                this.startActivity(intent)
-                this.finish()
-            }
-        } else{
-            Toast.makeText(this, "No NFC support", Toast.LENGTH_LONG).show()
-            val coroutineScope = CoroutineScope(Dispatchers.Main)
-            coroutineScope.launch {
-                delay(5000L)
-                this@StartActivity.finish()
-            }
+            Log.i("nfc URI detected: ", ndefRecord.payload.contentToString())
+            myIntent!!.putExtra("message", ndefRecord.payload.contentToString())
+            this.startActivity(intent)
+            this.finish()
         }
     }
 

@@ -33,10 +33,11 @@ class ExpensesFragment: Fragment() {
     private val binding get() = _binding!!
     private lateinit var itemBindind: ExpenseListRowBinding
 
+    var bool = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(!isNotificaionServiceEnabled()){
+        if(isNotificaionServiceEnabled()){
             val enableNotificationListener = buildNotificationServiceAlertDialog()
             enableNotificationListener.show()
         }
@@ -84,6 +85,7 @@ class ExpensesFragment: Fragment() {
  * Verifies if the notification listener service is enabled.
  * */
     fun isNotificaionServiceEnabled(): Boolean{
+
         var pkgName = Package.getPackages()
         val flat = Settings.Secure.getString(
             context?.contentResolver,
@@ -95,11 +97,11 @@ class ExpensesFragment: Fragment() {
                 val componentName = ComponentName.unflattenFromString(name)
                 if (TextUtils.equals(pkgName.toString(), componentName?.packageName)){
                     Log.i("pkgs", "${pkgName.toString()}")
-                    return true
+                    bool = true
                 }
             }
         }
-        return false
+        return bool
     }
 
     @SuppressLint("SetTextI18n")
