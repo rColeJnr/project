@@ -1,4 +1,4 @@
-package com.googlepractices.budgetly.ui.fragments
+package com.googlepractices.budgetly.ui.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
