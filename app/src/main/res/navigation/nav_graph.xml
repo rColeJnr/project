@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/fragment_expenses"
-        android:name="com.googlepractices.budgetly.ExpensesFragment"
+        android:name="com.googlepractices.budgetly.ui.fragments.ExpensesFragment"
         android:label="ExpensesFragment"
         tools:layout="@layout/fragment_expenses">
         <action
@@ -15,13 +15,13 @@
 
     <fragment
         android:id="@+id/fragment_statistics"
-        android:name="com.googlepractices.budgetly.StatisticsFragment"
+        android:name="com.googlepractices.budgetly.ui.fragments.StatisticsFragment"
         android:label="StatisticsFragment"
         tools:layout="@layout/fragment_statistics"/>
 
     <fragment
         android:id="@+id/fragment_settings"
-        android:name="com.googlepractices.budgetly.SettingsFragment"
+        android:name="com.googlepractices.budgetly.ui.fragments.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"/>
 </navigation>

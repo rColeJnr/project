@@ -1,4 +1,4 @@
-package com.googlepractices.budgetly;
+package com.googlepractices.budgetly.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.googlepractices.budgetly.model.Expense;
+import com.googlepractices.budgetly.R;
+import com.googlepractices.budgetly.ui.BudgetLYActivity;
 
 import java.util.ArrayList;
 import java.util.List;

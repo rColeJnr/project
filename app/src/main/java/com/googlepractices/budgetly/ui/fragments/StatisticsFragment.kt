@@ -1,4 +1,4 @@
-package com.googlepractices.budgetly
+package com.googlepractices.budgetly.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

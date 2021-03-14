@@ -1,12 +1,12 @@
-package com.googlepractices.budgetly
+package com.googlepractices.budgetly.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.googlepractices.budgetly.R
 import com.googlepractices.budgetly.databinding.FragmentSettingsBinding
-import com.googlepractices.budgetly.databinding.FragmentStatisticsBinding
 
 class SettingsFragment: Fragment(R.layout.fragment_settings) {
 

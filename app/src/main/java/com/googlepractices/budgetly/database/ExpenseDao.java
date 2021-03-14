@@ -1,8 +1,10 @@
-package com.googlepractices.budgetly;
+package com.googlepractices.budgetly.database;
 
-import androidx.room.Database;
 import androidx.room.Query;
 import androidx.room.Dao;
+
+import com.googlepractices.budgetly.model.Expense;
+
 import java.util.List;
 
 @Dao

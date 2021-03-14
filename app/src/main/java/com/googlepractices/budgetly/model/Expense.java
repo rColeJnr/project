@@ -1,4 +1,4 @@
-package com.googlepractices.budgetly;
+package com.googlepractices.budgetly.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Database;
