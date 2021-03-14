@@ -25,4 +25,7 @@ public class Expense {
 
     @ColumnInfo(name="category", defaultValue = "None")
     public String category;
+
+    @ColumnInfo(name="budget")
+    public String budget;
 }
