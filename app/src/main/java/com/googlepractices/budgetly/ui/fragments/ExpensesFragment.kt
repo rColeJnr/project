@@ -27,7 +27,7 @@ class ExpensesFragment: Fragment() {
     private val ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners"
     private val ACTION_NOTIFICATION_LISTENER_SETTINGS = "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
     private lateinit var broadcastReceiver: BroadcastReceiver
-
+    val adapter: ExpensesAdapter = ExpensesAdapter()
 
     private var _binding: FragmentExpensesBinding? = null
     private val binding get() = _binding!!
@@ -65,15 +65,16 @@ class ExpensesFragment: Fragment() {
 
         add_event_button.setOnClickListener {
             val intent = Intent(view.context, NewExpenseActivity::class.java)
-            view.context.startActivity(intent)
+            startActivity(intent)
+            adapter.load()
         }
 
         setuprv()
+        adapter.load()
     }
 
 //    sets the adapter, layoutManager and adds a separator line to each itemView in the rv
     private fun setuprv() {
-        val adapter = ExpensesAdapter()
         binding.recyclerView.apply {
             this.adapter = adapter
             this.layoutManager = LinearLayoutManager(context)

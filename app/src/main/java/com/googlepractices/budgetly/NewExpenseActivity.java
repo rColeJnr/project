@@ -1,6 +1,7 @@
 package com.googlepractices.budgetly;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,9 +25,10 @@ public class NewExpenseActivity extends AppCompatActivity {
 
     public void saveEvent() {
         try {
-            BudgetLYActivity.database.expenseDao().create(Integer.parseInt(mEditText.getText().toString()), Integer.parseInt(dEditText.getText().toString()), Integer.parseInt(yEditText.getText().toString()), Integer.parseInt(amountEditText.getText().toString()), categorySpinner.getSelectedItem().toString());
+            BudgetLYActivity.database.expenseDao().create(mEditText.getText().toString(), dEditText.getText().toString(), yEditText.getText().toString(), Float.parseFloat(amountEditText.getText().toString()), categorySpinner.getSelectedItem().toString());
         } catch (NumberFormatException nfe) {
             System.out.println("Could not parse " + nfe);
+            Log.v("error", "could't add new event");
         }
     }
 

@@ -1,5 +1,6 @@
 package com.googlepractices.budgetly.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
 
     public void load() {
         expenses = BudgetLYActivity.database.expenseDao().selectAll();
+        Log.v("expenses", String.valueOf(expenses.get(0).amount));
         notifyDataSetChanged();
     }
 }
