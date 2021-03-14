@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_expenses">
+
+    <fragment
+        android:id="@+id/fragment_expenses"
+        android:name="com.googlepractices.budgetly.ExpensesFragment"
+        android:label="ExpensesFragment" >
+        <action
+            android:id="@+id/action_expensesFragment_to_statisticsFragment"
+            app:destination="@id/fragment_statistics" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.googlepractices.budgetly.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/fragment_statistics"
+        android:name="com.googlepractices.budgetly.StatisticsFragment"
+        android:label="StatisticsFragment" />
+</navigation>
